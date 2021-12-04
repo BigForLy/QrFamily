@@ -1,11 +1,21 @@
 import SwiftUI
 import shared
 
+
 struct ContentView: View {
 	let greet = Greeting().greeting()
 
 	var body: some View {
-		Text(greet)
+        NavigationView {
+            VStack {
+                Text(greet)
+                Text(greet)
+                Text(greet)
+                NavigationLink(destination: SwiftUIView()) {
+                    Text("Do Something")
+                }
+            }
+        }
 	}
 }
 
