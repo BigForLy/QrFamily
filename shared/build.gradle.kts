@@ -23,7 +23,7 @@ kotlin {
             dependencies {
                 implementation("io.ktor:ktor-client-core:1.6.6")
                 implementation("io.ktor:ktor-client-serialization:1.6.6")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.3.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.3.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
             }
         }
@@ -33,7 +33,11 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation("com.google.zxing:core:3.4.0")
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
