@@ -1,5 +1,6 @@
 package com.example.qrfamily.android
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
@@ -25,6 +26,7 @@ class QrCardAdapter(context: Context, private val dataSource: Array<String>) :
         return position.toLong()
     }
 
+    @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val rowView = inflater.inflate(R.layout.card_qr, parent, false)
         val titleText = rowView.findViewById<TextView>(R.id.title_card)
