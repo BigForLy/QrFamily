@@ -15,8 +15,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+#          name: "Say hello"
+#          command: "echo Hello, World!"
           name: run some unit tests
           command: ./gradlew testStageDebugUnitTest
 
