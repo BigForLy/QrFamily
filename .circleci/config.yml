@@ -18,16 +18,14 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
   say-hello2:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+   build:
+    runs-on: ubuntu-latest
     steps:
-      - checkout
       - uses: actions/checkout@v1
       - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
       - name: Build with Gradle
         run: ./gradlew assembleDebug
 
