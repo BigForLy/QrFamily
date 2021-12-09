@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ListView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.TextView
+import com.example.qrfamily.android.adapter.QrCardAdapter
 
 class ListQrActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
