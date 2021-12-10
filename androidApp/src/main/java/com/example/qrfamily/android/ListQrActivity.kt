@@ -15,7 +15,7 @@ class ListQrActivity : AppCompatActivity() {
         setContentView(R.layout.activity_list_qr)
 
         val qr = QrGenerator().getQrCodeBitmap("asda")  // тестовое
-        SavedManager().saveBitmap(bmp =  qr, path = applicationContext.cacheDir.absolutePath.toString() + "test.png")
+        SavedManager().saveBitmap(bmp =  qr, path = applicationContext.cacheDir.absolutePath.toString() + "/test.png")
         uiEditor()
     }
 
