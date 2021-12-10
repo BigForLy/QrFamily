@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.button)
         button.setOnClickListener {
-            val intent = Intent(this, ActualQrActivity::class.java)
-//            val intent = Intent(this, ListQrActivity::class.java)
+//            val intent = Intent(this, ActualQrActivity::class.java)
+            val intent = Intent(this, ListQrActivity::class.java)
             startActivity(intent)
         }
     }

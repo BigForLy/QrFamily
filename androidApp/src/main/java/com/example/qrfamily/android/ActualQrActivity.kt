@@ -14,7 +14,7 @@ class ActualQrActivity : AppCompatActivity() {
     }
 
     private fun uiEditor() {
-        val qrBitmap = QrGenerator().getQrCodeBitmap("qwe", "qwer")
+        val qrBitmap = QrGenerator().getQrCodeBitmap("qwe")
         val imageView = findViewById<ImageView>(R.id.imageView)
         imageView.setImageBitmap(qrBitmap)
     }
