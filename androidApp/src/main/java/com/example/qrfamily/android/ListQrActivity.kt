@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.ListView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.TextView
+import com.example.qrfamily.QrGenerator
+import com.example.qrfamily.SavedManager
 import com.example.qrfamily.android.adapter.QrCardAdapter
 
 class ListQrActivity : AppCompatActivity() {
@@ -12,6 +14,8 @@ class ListQrActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_qr)
 
+        val qr = QrGenerator().getQrCodeBitmap("asda")  // тестовое
+        SavedManager().saveBitmap(bmp =  qr, path = applicationContext.cacheDir.absolutePath.toString() + "test.png")
         uiEditor()
     }
 

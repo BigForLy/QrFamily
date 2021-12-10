@@ -1,6 +1,5 @@
 package com.example.qrfamily
 
-import android.os.Environment
 import android.graphics.Bitmap
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -8,7 +7,6 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 import android.graphics.BitmapFactory
 import java.lang.Exception
-
 
 class SavedManager {
     fun readBitmap(path: String): Bitmap? {
@@ -21,11 +19,6 @@ class SavedManager {
             e.printStackTrace()
         }
         return bitmap
-
-//        val sd = Environment.getExternalStorageDirectory()
-//        val imageFile: File = File(sd + filepath)
-//        val bmOptions = BitmapFactory.Options()
-//        val image = BitmapFactory.decodeFile(imageFile.absolutePath, bmOptions)
     }
 
     fun saveBitmap(bmp: Bitmap, path: String) {
