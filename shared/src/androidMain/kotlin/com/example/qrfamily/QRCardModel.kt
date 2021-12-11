@@ -14,7 +14,9 @@ class SavedManager {
         try {
             val options = BitmapFactory.Options()
             options.inPreferredConfig = Bitmap.Config.ARGB_8888
-            bitmap = BitmapFactory.decodeStream(FileInputStream(path), null, options)
+//            bitmap = BitmapFactory.decodeStream(FileInputStream(path), null, options)
+            val z = FileSystemManager().readFile( "test.png") as ByteArray
+            bitmap = BitmapFactory.decodeByteArray(z, 0, z.size, options)
         } catch (e: Exception) {
             e.printStackTrace()
         }

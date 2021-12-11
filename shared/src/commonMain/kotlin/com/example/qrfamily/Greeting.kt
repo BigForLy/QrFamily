@@ -7,7 +7,7 @@ class Greeting {
         return "Hello, ${Platform().platform}!"
     }
 
-    fun d(): String {
+    fun temporaryDirectory(): String {
         return FileSystem.SYSTEM_TEMPORARY_DIRECTORY.toString()
     }
 }

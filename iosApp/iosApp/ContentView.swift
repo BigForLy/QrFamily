@@ -4,11 +4,12 @@ import shared
 
 struct ContentView: View {
 	let greet = Greeting().greeting()
+	let b = Greeting().temporaryDirectory()
 
 	var body: some View {
         NavigationView {
             VStack {
-                Text(greet)
+                Text(b)
                 Text(greet)
                 Text(greet)
                 NavigationLink(destination: SwiftUIView()) {
