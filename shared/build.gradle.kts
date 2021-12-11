@@ -37,6 +37,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
+                implementation("com.google.zxing:core:3.4.0")
             }
         }
         val androidTest by getting {

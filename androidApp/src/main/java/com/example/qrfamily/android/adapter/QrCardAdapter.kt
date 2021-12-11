@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.qrfamily.SavedManager
+import com.example.qrfamily.QRIntoFile
 import com.example.qrfamily.android.R
 
 class QrCardAdapter(context: Context, private val dataSource: Array<String>) :
@@ -37,7 +37,7 @@ class QrCardAdapter(context: Context, private val dataSource: Array<String>) :
         val recipe = getItem(position) as String
 
         titleText.text = recipe
-        imageCard.setImageBitmap(SavedManager().readBitmap(path = inflater.context.cacheDir.absolutePath.toString() + "test.png"))
+        imageCard.setImageBitmap(QRIntoFile().read(fileName = "test.png"))
 
         return rowView
     }
