@@ -1,7 +1,9 @@
 package com.example.qrfamily.file
 
-import com.example.qrfamily.toNSData
 import okio.FileSystem
+import platform.Foundation.NSFileManager
+import platform.Foundation.NSURL
+import platform.Foundation.writeToFile
 
 actual object FileSystem {
 

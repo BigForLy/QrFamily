@@ -1,10 +1,11 @@
-package com.example.qrfamily
+package com.example.qrfamily.file
 
 import kotlinx.cinterop.addressOf
+import kotlinx.cinterop.readBytes
 import kotlinx.cinterop.usePinned
 import platform.Foundation.*
 
-private fun Any.toNSData(): NSData? {
+fun Any.toNSData(): NSData? {
     return when (this) {
         is NSData -> this
         else -> {
