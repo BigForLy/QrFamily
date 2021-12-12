@@ -1,0 +1,22 @@
+CREATE TABLE tCard (
+id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+name TEXT NOT NULL,
+qr BLOB NOT NULL,
+position INTEGER DEFAULT NULL
+);
+
+selectAll:
+SELECT * FROM tCard;
+
+selectById:
+SELECT * FROM tCard WHERE id = ?;
+
+insertCard:
+INSERT OR IGNORE INTO tCard(id, name, qr, position)
+VALUES (?,?,?, ?);
+
+deleteById:
+DELETE FROM tCard WHERE id = ?;
+
+deleteAll:
+DELETE FROM tCard;

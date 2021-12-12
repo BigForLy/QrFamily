@@ -1,4 +1,4 @@
-package com.example.qrfamily
+package com.example.qrfamily.file
 
 expect object FileSystem {
     internal val temporaryPath: String

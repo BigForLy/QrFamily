@@ -1,4 +1,6 @@
-package com.example.qrfamily
+package com.example.qrfamily.file
+
+import com.example.qrfamily.file.FileSystem
 
 class FileSystemManager {
 

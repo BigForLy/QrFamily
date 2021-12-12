@@ -3,6 +3,13 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("com.squareup.sqldelight")
+}
+
+sqldelight {
+    database("QRBase") {
+        packageName = "com.example.qrfamily.db"
+    }
 }
 
 kotlin {
@@ -25,8 +32,11 @@ kotlin {
                 implementation("io.ktor:ktor-client-serialization:1.6.6")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.3.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
-
+                // FileSystem.SYSTEM_TEMPORARY_DIRECTORY
                 implementation("com.squareup.okio:okio:3.0.0")
+                // SqlDelight
+                implementation("com.squareup.sqldelight:runtime:1.5.3")
+                implementation("com.squareup.sqldelight:coroutines-extensions:1.5.3")
             }
         }
         val commonTest by getting {
@@ -38,6 +48,8 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("com.google.zxing:core:3.4.0")
+                // Database
+                implementation("com.squareup.sqldelight:android-driver:1.5.3")
             }
         }
         val androidTest by getting {
@@ -53,6 +65,10 @@ kotlin {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
+            dependencies {
+                // Database
+                implementation("com.squareup.sqldelight:native-driver:1.5.3")
+            }
             //iosSimulatorArm64Main.dependsOn(this)
         }
         val iosX64Test by getting

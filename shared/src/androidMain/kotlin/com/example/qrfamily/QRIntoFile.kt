@@ -3,6 +3,7 @@ package com.example.qrfamily
 import android.graphics.Bitmap
 import java.io.ByteArrayOutputStream
 import android.graphics.BitmapFactory
+import com.example.qrfamily.file.FileSystemManager
 import java.lang.Exception
 
 class QRIntoFile {

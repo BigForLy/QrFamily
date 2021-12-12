@@ -1,4 +1,4 @@
-package com.example.qrfamily
+package com.example.qrfamily.file
 
 import android.graphics.Bitmap
 import android.graphics.Color
