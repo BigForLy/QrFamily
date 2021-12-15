@@ -1,9 +1,10 @@
 package com.example.qrfamily.android
 
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
-import com.example.qrfamily.file.QrGenerator
+import com.example.qrfamily.file.FileSystem
 
 class ActualQrActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,9 +14,13 @@ class ActualQrActivity : AppCompatActivity() {
         uiEditor()
     }
 
+    private fun byteArray(): ByteArray? {
+        return intent.getByteArrayExtra("byteArray")
+    }
+
     private fun uiEditor() {
-        val qrBitmap = QrGenerator().getQrCodeBitmap("qwe")
+        val qrBitmap = byteArray()?.let { FileSystem.toImage(it) }
         val imageView = findViewById<ImageView>(R.id.imageView)
-        imageView.setImageBitmap(qrBitmap)
+        qrBitmap?.let {imageView.setImageBitmap(it as Bitmap?)}
     }
 }

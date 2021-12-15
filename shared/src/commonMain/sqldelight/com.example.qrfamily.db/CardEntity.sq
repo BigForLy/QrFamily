@@ -11,9 +11,12 @@ SELECT * FROM tCard;
 selectById:
 SELECT * FROM tCard WHERE id = ?;
 
+selectByName:
+SELECT * FROM tCard WHERE name = ?;
+
 insertCard:
-INSERT OR IGNORE INTO tCard(id, name, qr, position)
-VALUES (?,?,?, ?);
+INSERT OR IGNORE INTO tCard(name, qr)
+VALUES (?,?);
 
 deleteById:
 DELETE FROM tCard WHERE id = ?;

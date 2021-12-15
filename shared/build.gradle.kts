@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin("multiplatform")
+    id("kotlinx-serialization")
     id("com.android.library")
     id("com.squareup.sqldelight")
 }
@@ -28,10 +29,13 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                // Ktor
                 implementation("io.ktor:ktor-client-core:1.6.6")
                 implementation("io.ktor:ktor-client-serialization:1.6.6")
+                // Serialization
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.3.1")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+//                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.5")
                 // FileSystem.SYSTEM_TEMPORARY_DIRECTORY
                 implementation("com.squareup.okio:okio:3.0.0")
                 // SqlDelight
@@ -47,7 +51,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation("com.google.zxing:core:3.4.0")
+                implementation("com.google.zxing:core:3.4.0") // ?
                 // Database
                 implementation("com.squareup.sqldelight:android-driver:1.5.3")
             }

@@ -2,11 +2,11 @@ package com.example.qrfamily.file
 
 class FileSystemManager {
 
-    fun readFile(fileName: String): Any? {
-        return FileSystem.readFile(fileName)
+    fun toByteArray(content: Any) : ByteArray? {
+        return FileSystem.toByteArray(content)
     }
 
-    fun writeFile(fileName: String, content: Any): Boolean {
-        return FileSystem.writeFile(fileName, content)
+    fun toImage(content: ByteArray): Any? {
+        return FileSystem.toImage(content)
     }
 }
