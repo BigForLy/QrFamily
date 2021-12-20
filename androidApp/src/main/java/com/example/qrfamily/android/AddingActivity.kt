@@ -8,7 +8,12 @@ import android.widget.EditText
 import com.example.qrfamily.data.DatabaseManager
 import com.example.qrfamily.file.FileSystem
 import com.example.qrfamily.file.QrGenerator
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
+@DelicateCoroutinesApi
 class AddingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +29,14 @@ class AddingActivity : AppCompatActivity() {
         addButton.setOnClickListener {
             val qrBitmap = QrGenerator().getQrCodeBitmap(url.text.toString())
             val byteArray = FileSystem.toByteArray(qrBitmap)
-            byteArray?.let { array ->
-                DatabaseManager().insertCard(
-                    name = name.text.toString(),
-                    qr = array
-                )
+
+            GlobalScope.launch(Dispatchers.IO) {
+                byteArray?.let { array ->
+                    DatabaseManager().insertCard(
+                        name = name.text.toString(),
+                        qr = array
+                    )
+                }
             }
             val intent = Intent(this, ActualQrActivity::class.java).apply {
                 putExtra("byteArray", byteArray)

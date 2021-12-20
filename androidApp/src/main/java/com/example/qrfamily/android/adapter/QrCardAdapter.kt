@@ -14,16 +14,18 @@ import com.example.qrfamily.android.R
 import com.example.qrfamily.file.FileSystem
 import comexampleqrfamilydb.TCard
 
-class QrCardAdapter(context: Context, private val dataSource: List<TCard>) : BaseAdapter() {
+class QrCardAdapter(context: Context, dataSource: List<TCard>) : BaseAdapter() {
+
+    var data = dataSource
 
     private val inflater: LayoutInflater = (context as Activity).layoutInflater
 
     override fun getCount(): Int {
-        return dataSource.size
+        return data.size
     }
 
     override fun getItem(position: Int): Any {
-        return dataSource[position]
+        return data[position]
     }
 
     override fun getItemId(position: Int): Long {

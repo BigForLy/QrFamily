@@ -14,7 +14,8 @@ import kotlinx.coroutines.*
 
 @DelicateCoroutinesApi
 class ListQrActivity : AppCompatActivity() {
-    private lateinit var allCard : List<TCard>
+    private lateinit var allCard: List<TCard>
+    private lateinit var adapter: QrCardAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +26,14 @@ class ListQrActivity : AppCompatActivity() {
 
     private fun uiEditor() {
         GlobalScope.launch(Dispatchers.IO) {
-            getDBData()
+            appContext = applicationContext
+            allCard = DatabaseManager().getAllCard()
+            runOnUiThread {
+                val listView = findViewById<ListView>(R.id.listView)
+                adapter = QrCardAdapter(this@ListQrActivity, allCard)
+                adapter.notifyDataSetChanged()
+                listView.adapter = adapter
+            }
         }
 
         val listView = findViewById<ListView>(R.id.listView)
@@ -42,15 +50,21 @@ class ListQrActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun getDBData() {
-        appContext = applicationContext
-        allCard = withContext(Dispatchers.IO) {
-            DatabaseManager().getAllCard()
+    private fun getDBData() {
+        GlobalScope.launch(Dispatchers.IO) {
+            if (this@ListQrActivity::adapter.isInitialized &&
+            allCard.size != DatabaseManager().getCountCard()) {
+                allCard = DatabaseManager().getAllCard()
+                adapter.data = allCard
+                runOnUiThread {
+                    adapter.notifyDataSetChanged()
+                }
+            }
         }
-        runOnUiThread {
-            val listView = findViewById<ListView>(R.id.listView)
-            val adapter = QrCardAdapter(this, allCard)
-            listView.adapter = adapter
-        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getDBData()
     }
 }

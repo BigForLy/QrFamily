@@ -8,11 +8,11 @@ position INTEGER DEFAULT NULL
 selectAll:
 SELECT * FROM tCard;
 
+selectCountCard:
+SELECT Count(*) FROM tCard;
+
 selectById:
 SELECT * FROM tCard WHERE id = ?;
-
-selectByName:
-SELECT * FROM tCard WHERE name = ?;
 
 insertCard:
 INSERT OR IGNORE INTO tCard(name, qr)

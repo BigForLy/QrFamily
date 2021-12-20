@@ -2,19 +2,27 @@ package com.example.qrfamily.data
 
 import comexampleqrfamilydb.TCard
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DatabaseManager {
     private val db = DatabaseFactory.db
 
-    fun insertCard(name: String, qr: ByteArray) {
-        GlobalScope.launch(Dispatchers.Unconfined) {
+    suspend fun insertCard(name: String, qr: ByteArray) : Boolean {
+        return withContext(Dispatchers.Default) {
             db.cardEntityQueries.insertCard(name = name, qr = qr)
+            true
         }
     }
 
-    fun getAllCard() : List<TCard> {
-        return db.cardEntityQueries.selectAll().executeAsList()
+    suspend fun getAllCard() : List<TCard> {
+        return withContext(Dispatchers.Default) {
+            db.cardEntityQueries.selectAll().executeAsList()
+        }
+    }
+
+    suspend fun getCountCard() : Int {
+        return withContext(Dispatchers.Default) {
+            db.cardEntityQueries.selectCountCard().executeAsOne().toInt()
+        }
     }
 }

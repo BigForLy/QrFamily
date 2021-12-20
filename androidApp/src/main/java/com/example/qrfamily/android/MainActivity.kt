@@ -6,7 +6,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.qrfamily.Greeting
+import kotlinx.coroutines.DelicateCoroutinesApi
 
+@DelicateCoroutinesApi
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.button)
         button.setOnClickListener {
-//            val intent = Intent(this, ActualQrActivity::class.java)
-            val intent = Intent(this, ListQrActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ListQrActivity::class.java))
         }
     }
 }
