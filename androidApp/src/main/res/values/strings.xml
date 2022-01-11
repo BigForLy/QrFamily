@@ -1,4 +1,9 @@
 <resources>
 
     <string name="button">Button</string>
+    <string name="nameQr">Имя</string>
+    <string name="textQR">Текст или ссылка</string>
+    <string name="addQR">Добавить</string>
+    <string name="editTextSetName">Введите имя</string>
+    <string name="editTextSetText">Введите текст</string>
 </resources>

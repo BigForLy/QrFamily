@@ -10,14 +10,13 @@
         android:id="@+id/add_new_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="24dp"
-        android:clickable="true"
-        android:contentDescription="TODO"
-        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@color/colorPrimary" />
+        android:layout_margin="32dp"
+        app:backgroundTint="@color/colorBlue"
+        android:src="@drawable/ic_baseline_library_add_24"
+        app:elevation="6dp"
+        android:contentDescription="TODO" />
 
     <ListView
         android:id="@+id/listView"
